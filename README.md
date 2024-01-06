@@ -1,3 +1,5 @@
+![Screenshot of the plugin panel in Blender](./docs/thumbnail.png)
+
 # Render Buddy
 
 Provides output presets for rendering (like 1080p square, or 4k widescreen), and other helpful rendering utilities.
