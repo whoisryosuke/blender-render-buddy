@@ -2,7 +2,7 @@ bl_info = {
     "name": "Render Buddy",
     "description": "",
     "author": "whoisryosuke",
-    "version": (0, 0, 1),
+    "version": (0, 0, 2),
     "blender": (2, 80, 0),
     "location": "Properties > Output",
     "warning": "", # used for warning icon and text in addons panel
@@ -10,6 +10,8 @@ bl_info = {
     "tracker_url": "",
     "category": "Development"
 }
+
+from typing import Set
 
 import bpy
 
@@ -23,9 +25,6 @@ class ExportPresetsPanel(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
-
-        scene = context.scene
-
         
         # Big render button
         layout.label(text="Test Render:")
@@ -57,9 +56,9 @@ class EXPORT_OPTIONS_set_1080p_square(bpy.types.Operator):
     bl_description = "Sets Resolution to 1080p"
     bl_options = {"UNDO"}
 
-    def execute(self, context: bpy.types.Context) -> set[str]:
-        bpy.data.scenes["Scene"].render.resolution_x = 1080;
-        bpy.data.scenes["Scene"].render.resolution_y = 1080;
+    def execute(self, context: bpy.types.Context) -> Set[str]:
+        context.scene.render.resolution_x = 1080
+        context.scene.render.resolution_y = 1080
         return {"FINISHED"}
 
 class EXPORT_OPTIONS_set_1080p_vertical(bpy.types.Operator):
@@ -68,9 +67,9 @@ class EXPORT_OPTIONS_set_1080p_vertical(bpy.types.Operator):
     bl_description = "Sets Resolution to 1080p x 1920p"
     bl_options = {"UNDO"}
 
-    def execute(self, context: bpy.types.Context) -> set[str]:
-        bpy.data.scenes["Scene"].render.resolution_x = 1080;
-        bpy.data.scenes["Scene"].render.resolution_y = 1920;
+    def execute(self, context: bpy.types.Context) -> Set[str]:
+        context.scene.render.resolution_x = 1080
+        context.scene.render.resolution_y = 1920
         return {"FINISHED"}
 
 class EXPORT_OPTIONS_set_1080p_widescreen(bpy.types.Operator):
@@ -79,9 +78,9 @@ class EXPORT_OPTIONS_set_1080p_widescreen(bpy.types.Operator):
     bl_description = "Sets Resolution to 1920p x 1080p"
     bl_options = {"UNDO"}
 
-    def execute(self, context: bpy.types.Context) -> set[str]:
-        bpy.data.scenes["Scene"].render.resolution_x = 1920;
-        bpy.data.scenes["Scene"].render.resolution_y = 1080;
+    def execute(self, context: bpy.types.Context) -> Set[str]:
+        context.scene.render.resolution_x = 1920
+        context.scene.render.resolution_y = 1080
         return {"FINISHED"}
 
 class EXPORT_OPTIONS_set_4k_square(bpy.types.Operator):
@@ -90,9 +89,9 @@ class EXPORT_OPTIONS_set_4k_square(bpy.types.Operator):
     bl_description = "Sets Resolution to 3840px x 3840px"
     bl_options = {"UNDO"}
 
-    def execute(self, context: bpy.types.Context) -> set[str]:
-        bpy.data.scenes["Scene"].render.resolution_x = 3840;
-        bpy.data.scenes["Scene"].render.resolution_y = 3840;
+    def execute(self, context: bpy.types.Context) -> Set[str]:
+        context.scene.render.resolution_x = 3840
+        context.scene.render.resolution_y = 3840
         return {"FINISHED"}
 
 class EXPORT_OPTIONS_set_4k_widescreen(bpy.types.Operator):
@@ -101,9 +100,9 @@ class EXPORT_OPTIONS_set_4k_widescreen(bpy.types.Operator):
     bl_description = "Sets Resolution to 3840px x 2160px"
     bl_options = {"UNDO"}
 
-    def execute(self, context: bpy.types.Context) -> set[str]:
-        bpy.data.scenes["Scene"].render.resolution_x = 3840;
-        bpy.data.scenes["Scene"].render.resolution_y = 2160;
+    def execute(self, context: bpy.types.Context) -> Set[str]:
+        context.scene.render.resolution_x = 3840
+        context.scene.render.resolution_y = 2160
         return {"FINISHED"}
 
 class EXPORT_OPTIONS_set_4k_vertical(bpy.types.Operator):
@@ -112,9 +111,9 @@ class EXPORT_OPTIONS_set_4k_vertical(bpy.types.Operator):
     bl_description = "Sets Resolution to 2160px x 3840px"
     bl_options = {"UNDO"}
 
-    def execute(self, context: bpy.types.Context) -> set[str]:
-        bpy.data.scenes["Scene"].render.resolution_x = 2160;
-        bpy.data.scenes["Scene"].render.resolution_y = 3840;
+    def execute(self, context: bpy.types.Context) -> Set[str]:
+        context.scene.render.resolution_x = 2160
+        context.scene.render.resolution_y = 3840
         return {"FINISHED"}
 
 classes = (
@@ -127,16 +126,7 @@ classes = (
     EXPORT_OPTIONS_set_4k_vertical
 )
 
-def register():
-    for cls in classes:
-        bpy.utils.register_class(cls)
-    # bpy.utils.register_classes_factory(classes)
-
-
-def unregister():
-    for cls in classes:
-        bpy.utils.unregister_class(cls)
-    # bpy.utils.register_classes_factory(classes)
+register, unregister = bpy.utils.register_classes_factory(classes)
 
 
 if __name__ == "__main__":

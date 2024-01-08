@@ -25,4 +25,6 @@ Provides output presets for rendering (like 1080p square, or 4k widescreen), and
 1. Run the plugin.
 1. Rinse repeat.
 
-> You can also just install it and then edit from where it's installed. Not sure if it hot reloads though, you might need to toggle plugin on/off.
+> You can also just install it and then edit from where it's installed.
+> Use Blender's "Reload Scripts" operator to reload the add-on.
+> Click the Blender icon from the top menu -> System -> Reload Scripts.
