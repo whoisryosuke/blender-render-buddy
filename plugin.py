@@ -2,7 +2,7 @@ bl_info = {
     "name": "Render Buddy",
     "description": "",
     "author": "whoisryosuke",
-    "version": (0, 0, 1),
+    "version": (0, 0, 2),
     "blender": (2, 80, 0),
     "location": "Properties > Output",
     "warning": "", # used for warning icon and text in addons panel
