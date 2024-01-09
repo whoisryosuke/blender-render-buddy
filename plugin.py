@@ -53,7 +53,9 @@ class ExportPresetsPanel(bpy.types.Panel):
         scene = context.scene
         state = scene.render_buddy
 
-        
+        row = layout.row()
+        row.prop(scene, "camera")
+
         # Big render button
         layout.label(text="Test Render:")
         row = layout.row()
