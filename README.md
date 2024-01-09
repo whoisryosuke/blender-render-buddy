@@ -10,6 +10,7 @@ Provides output presets for rendering (like 1080p square, or 4k widescreen), and
   - 1080p
   - 4k
 - Test Render (preserves previous settings - renders at set percent)
+- Quick Camera Selector
 
 ## Getting Started
 
